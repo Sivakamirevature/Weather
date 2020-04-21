@@ -44,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         updateListView();
     }
-
+//    Getting Indian Cites
     public void updateListView() {
-        Cities cityObj = new Cities();
+        RestCall cityObj = new RestCall();
         try {
             String response = cityObj.execute("https://api.openaq.org/v1/cities?country=IN").get();
             Log.i("Content DATA :", response);
@@ -88,34 +88,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         MyAdapter mAdapter = new MyAdapter(this,cities);
         recyclerView.setAdapter(mAdapter);
-    }
-
-    public class Cities extends AsyncTask<String, Void, String>{
-
-        @Override
-        protected String doInBackground(String... address) {
-            try {
-                URL url = new URL(address[0]);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.connect();
-                InputStream is = connection.getInputStream();
-                InputStreamReader isr = new InputStreamReader(is);
-                int data = isr.read();
-                String content = "";
-                char ch;
-                while(data != -1){
-                    ch = (char) data;
-                    content = content + ch;
-                    data  = isr.read();
-                }
-                return content;
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
     }
 
     private static class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {

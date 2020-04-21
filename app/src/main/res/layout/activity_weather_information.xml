@@ -41,7 +41,7 @@
         android:id="@+id/result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="92dp"
         android:padding="8dp"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -58,8 +58,10 @@
         android:layout_marginTop="228dp"
         android:onClick="back"
         android:text="Back"
+        app:layout_constraintBottom_toBottomOf="@+id/result"
         app:layout_constraintEnd_toEndOf="@+id/searchButton"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="@+id/searchButton"
-        app:layout_constraintTop_toTopOf="@+id/searchButton" />
+        app:layout_constraintTop_toTopOf="@+id/searchButton"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
