@@ -7,7 +7,8 @@
         <item
             android:id="@+id/nav_aboutapp"
             android:icon="@drawable/ic_app"
-            android:title="About App"></item>
+            android:title="About App"
+            android:onClick="appInfo"></item>
         <item
             android:id="@+id/nav_contact"
             android:icon="@drawable/ic_contact"
@@ -21,7 +22,8 @@
             <item
                 android:id="@+id/nav_aboutme"
                 android:icon="@drawable/ic_about_me"
-                android:title="About Me"></item>
+                android:title="About Me"
+                android:onClick="aboutMe"></item>
         </menu>
     </item>
 </menu>

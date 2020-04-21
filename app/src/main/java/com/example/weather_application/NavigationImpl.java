@@ -1,5 +1,6 @@
 package com.example.weather_application;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,12 +26,16 @@ public class NavigationImpl extends AppCompatActivity {
         toggle.syncState();
     }
     public void contactInfo(MenuItem menuItem){
+        //Intent intent = new Intent(this, contact_info.xml);
         Toast.makeText(this,"Contact Info",Toast.LENGTH_LONG).show();
-
+    }
+    public void appInfo(MenuItem menuItem){
+        Toast.makeText(this,"Application Info",Toast.LENGTH_LONG).show();
+    }
+    public void aboutMe(MenuItem menuItem){
+        Toast.makeText(this,"I am Sivakami",Toast.LENGTH_LONG).show();
     }
     @Override
-
-
     public void onBackPressed() {
         if(drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
