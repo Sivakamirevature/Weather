@@ -10,8 +10,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+//Class for getting Cities and Weather information by invoking API method
 public class RestCall extends AsyncTask<String, Void, String> {
-
     @Override
     protected String doInBackground(String... address) {
         try {

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,105 +36,28 @@ import java.util.concurrent.ExecutionException;
 import static android.widget.Toast.*;
 
 public class MainActivity extends AppCompatActivity {
-    ListView citiesList;
-    ArrayList<String> cities = new ArrayList<String>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        updateListView();
     }
-//    Getting Indian Cites
-    public void updateListView() {
-        RestCall cityObj = new RestCall();
-        try {
-            String response = cityObj.execute("https://api.openaq.org/v1/cities?country=IN").get();
-            Log.i("Content DATA :", response);
-            JSONObject jsonObject = new JSONObject(response);
-            String results = jsonObject.getString("results");
-            Log.i("\nData", results);
-            JSONArray array = new JSONArray(results);
-            String city = "";
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject part = array.getJSONObject(i);
-                city = part.getString("city");
-                cities.add(city);
-            }
-            makeText(this, String.valueOf(cities), LENGTH_SHORT).show();
-            Log.i("cities Array: ", String.valueOf(cities));
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-//        citiesList = (ListView)findViewById(R.id.cityListView);
-//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.activity_listview, R.id.textView, cities);
-//        citiesList.setAdapter(arrayAdapter);
-//        citiesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//               Intent intent = new Intent(MainActivity.this, WeatherInformation.class);
-//               intent.putExtra("cityname", cities.get(position));
-//               startActivity(intent);
-//            }
-//        });
-
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.cityRecycleView);
-        recyclerView.setHasFixedSize(true);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        MyAdapter mAdapter = new MyAdapter(this,cities);
-        recyclerView.setAdapter(mAdapter);
+    public void showRecycleView(View view){
+        Intent intent = new Intent(this,RecycView_Example.class);
+        this.startActivity(intent);
     }
 
-    private static class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-        private  ArrayList<String> mDataset;
-        private Context context;
+    public void showCardLayout(View view){
+        Intent intent = new Intent(this,CardLayout_Example.class);
+        this.startActivity(intent);
+    }
 
-        public static class MyViewHolder extends RecyclerView.ViewHolder {
-            // each data item is just a string in this case
-            public TextView textView;
-            public MyViewHolder(TextView v) {
-                super(v);
-                textView = v;
-            }
-        }
-        public MyAdapter(Context context1, ArrayList<String> myDataset) {
-            context = context1;
-            mDataset = myDataset;
-        }
+    public void showSideNavigation(View view){
+        Intent intent = new Intent(this,NavigationImpl.class);
+        this.startActivity(intent);
+    }
 
-        @NonNull
-        @Override
-        public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            TextView v = (TextView) LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.activity_listview, parent, false);
-            MyViewHolder vh = new MyViewHolder(v);
-            return vh;
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, final int position) {
-            holder.textView.setText(mDataset.get(position));
-            holder.textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent=new Intent(context,WeatherInformation.class);
-                    intent.putExtra("cityname",mDataset.get(position));
-                    context.startActivity(intent);
-                }
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            int size = mDataset.size();
-           Log.i("\n\nSize:", String.valueOf(size));
-           return mDataset.size();
-        }
+    public void sharedPreferenceMethod(View view){
+        Intent intent = new Intent(this, SharedPreferenceImpl.class);
+        this.startActivity(intent);
     }
 }

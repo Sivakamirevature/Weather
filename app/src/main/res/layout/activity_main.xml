@@ -6,21 +6,36 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="showRecycleView"
+        android:text="Recycler View Example" />
 
-<!--    <ListView-->
-<!--        android:id="@+id/cityListView"-->
-<!--        android:layout_width="fill_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:divider="@color/material_blue_grey_800"-->
-<!--        android:dividerHeight="1dp"-->
-<!--        android:listSelector="@color/colorPrimary"-->
-<!--        android:onClick="getCity" />-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/cityRecycleView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:onClick="getCity"
-        android:padding="4dp"
-        android:background="@android:color/darker_gray"
-        android:scrollbars="vertical"/>
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="showCardLayout"
+        android:text="Card Layout with Recycler View" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="showSideNavigation"
+        android:text="Side Navigation" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="sharedPreferenceMethod"
+        android:text="Shared Preference Implementation" />
+
 </LinearLayout>

@@ -45,7 +45,7 @@ public class WeatherInformation extends AppCompatActivity {
         String content;
         RestCall weather = new RestCall();
         try {
-            content = weather.execute("https://openweathermap.org/data/2.5/weather?q=" + city + "&appid=439d4b804bc8187953eb36d2a8c26a02").get();
+            content = weather.execute("https://openweathermap.org/data/2.5/weather?q="+ city + "&appid=439d4b804bc8187953eb36d2a8c26a02").get();
             Log.i("Content DATA :", content);
             JSONObject jsonObject = new JSONObject(content);
             String weatherData = jsonObject.getString("weather");
@@ -64,6 +64,7 @@ public class WeatherInformation extends AppCompatActivity {
             visibility = Double.parseDouble(jsonObject.getString("visibility"));
             Log.i("main",main);
             Log.i("description",description);
+            Toast.makeText(this,"Temprature "+temprature,Toast.LENGTH_LONG).show();
             result.setText("Main: "+main+
                     "\nDescription: "+description +
                     "\nTemprature: "+temprature+
